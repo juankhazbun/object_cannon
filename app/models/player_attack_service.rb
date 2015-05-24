@@ -42,8 +42,6 @@ class PlayerAttackService
       # Change player turn
       @game.turn = 1
     end
-
-    puts "Winner: " + @game.winner.to_s
     # Update the object game
     @game.save
     attributes
