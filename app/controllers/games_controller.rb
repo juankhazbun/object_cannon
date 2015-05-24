@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :attack]
 
   def new
   	@game = Game.new
@@ -18,6 +17,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @game = Game.find(params[:id])
   end
 
   def ranking
@@ -31,16 +31,15 @@ class GamesController < ApplicationController
     player_attack = PlayerAttackService.new(params[:id])
     @attack = player_attack.attack
 
+    @game = Game.find(params[:id])
+    
+    # Respond to the ajax request with the serializer
     respond_to do |format|
       format.json { render json: @game, root: false }
     end
   end
 
   private 
-
-  def set_game
-    @game = Game.find(params[:id])
-  end
 
   def game_params
   	params.require(:game).permit(player1_attributes: [:id, :name], player2_attributes: [:id, :name])
