@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'games/ranking' => 'games#ranking'
 
+  get 'games/:id/attack' => 'games#attack', as: 'game_attack'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

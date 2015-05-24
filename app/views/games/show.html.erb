@@ -1,2 +1,10 @@
 <h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<h2>Player1: <%= @game.player1.name %></h2>
+<p>Wall Health: <%= @game.player1.wall_health %></p>
+<h2>Player2: <%= @game.player2.name %></h2>
+<p>Wall Health: <%= @game.player2.wall_health%></p>
+---------
+<p>Attack: <%= @attack %></p>
+<p>Turn: <%= @game.turn %></p>
+<p>Winner: <%= @game.winner %></p>
+<%= link_to "Attack!!!", game_attack_path, remote: true %> 
