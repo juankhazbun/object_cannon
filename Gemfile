@@ -47,3 +47,7 @@ end
 gem 'simple_form'
 gem 'rspec-rails'
 gem 'shoulda-matchers'
+gem 'factory_girl_rails'
+gem 'faker'
+gem 'database_cleaner'
+gem 'capybara'
