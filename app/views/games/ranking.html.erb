@@ -1,2 +1,23 @@
-<h1>Games#ranking</h1>
-<p>Find me in app/views/games/ranking.html.erb</p>
+<h1>Ranking</h1>
+<table class="table">
+	<tr>
+		<td>Player 1 Name</td>
+		<td>Player 2 Name</td>
+		<td>Winner Wall Health Remaining</td>
+		<td>Winner</td>
+	</tr>
+	<% @games.each do |game| %>
+    	<tr>
+    		<td><%= game.player1.name %></td>
+    		<td><%= game.player2.name %></td>
+    		<% if game.winner == 1 %>
+    			<td><%= game.player1.wall_health %></td>
+			<% elsif game.winner == 2 %>
+				<td><%= game.player2.wall_health %></td>
+			<% else %>
+				<td>----</td>
+			<% end %>
+    		<td><%= (game.winner != 0 ? game.winner : 'Not completed') %></td>
+		</tr>
+  	<% end %>
+</table>
