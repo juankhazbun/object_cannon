@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_action :set_game, only: [:show, :attack]
+
   def new
   	@game = Game.new
   	@game.player1 = Player.new
@@ -16,25 +18,30 @@ class GamesController < ApplicationController
   end
 
   def show
-  	@game = Game.find(params[:id])
   end
 
   def ranking
   	# TODO: paginate the results
-  	@Game = Game.all
+  	@games = Game.all
   end
 
   def attack
+    
     # Create the subscriber service to check for prizes
     player_attack = PlayerAttackService.new(params[:id])
     @attack = player_attack.attack
 
     respond_to do |format|
-      format.js { render json: @game }
+      format.json { render json: @game, root: false }
     end
   end
 
   private 
+
+  def set_game
+    @game = Game.find(params[:id])
+  end
+
   def game_params
   	params.require(:game).permit(player1_attributes: [:id, :name], player2_attributes: [:id, :name])
   end

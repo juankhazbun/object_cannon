@@ -15,6 +15,8 @@ class PlayerAttackService
     # Calculate the attributes of the object
     attributes = rand(6)
 
+    puts "Turn: " + @game.turn.to_s
+
     puts "Basic attributes: " + attributes.to_s
 
     # Get extra hit points
