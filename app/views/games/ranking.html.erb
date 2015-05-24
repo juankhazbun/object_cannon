@@ -12,12 +12,15 @@
     		<td><%= game.player2.name %></td>
     		<% if game.winner == 1 %>
     			<td><%= game.player1.wall_health %></td>
+    			<td><%= game.player1.name %></td>
 			<% elsif game.winner == 2 %>
 				<td><%= game.player2.wall_health %></td>
+				<td><%= game.player2.name %></td>
 			<% else %>
 				<td>----</td>
+				<td>Not Completed</td>
 			<% end %>
-    		<td><%= (game.winner != 0 ? game.winner : 'Not completed') %></td>
+    		
 		</tr>
   	<% end %>
 </table>
