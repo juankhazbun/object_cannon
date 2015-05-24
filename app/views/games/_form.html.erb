@@ -1,0 +1,9 @@
+<%= simple_form_for @game do |f| %>
+	<%= f.simple_fields_for :player1 do |player1_form| %>
+		<%= player1_form.input :name %>
+	<% end %>
+	<%= f.simple_fields_for :player2 do |player2_form| %>
+		<%= player2_form.input :name %>
+	<% end %>
+<%= f.submit %>
+<% end %>
