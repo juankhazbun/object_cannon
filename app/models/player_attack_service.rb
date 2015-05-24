@@ -24,33 +24,35 @@ class PlayerAttackService
 
     # Execute the attack to the corresponding player
     if @game.turn == 1
-      @game.player2.wall_health -= attributes
+      @game.player2.wall_health = hit(@game.player2, attributes)
 
-      # Check if the player1 won the game
-      @game.winner = 1 if check_for_winner(@game.player2)
+      if @game.player2.wall_health == 0
+        @game.winner = 1
+      end
 
       # Change player turn
       @game.turn = 2
     else
-      @game.player1.wall_health -= attributes
+      @game.player1.wall_health = hit(@game.player1, attributes)
 
-      # Check if the player2 won the game
-      @game.winner = 2 if check_for_winner(@game.player1)
+      if @game.player1.wall_health == 0
+        @game.winner = 2
+      end
 
       # Change player turn
       @game.turn = 1
     end
+
+    puts "Winner: " + @game.winner.to_s
     # Update the object game
     @game.save
     attributes
   end
 
-  def check_for_winner(player)
-    # Check if the wall is destroyed to terminate the game
-    if player.wall_health <= 0
-       return true
-    end
-    return false
+  def hit(player, damage)
+    # Check if the remaining health is not enough
+    return player.wall_health - damage if player.wall_health - damage > 0
+    return 0
   end
 
   # Calculate the chances and get extra hit points
