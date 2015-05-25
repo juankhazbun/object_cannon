@@ -15,10 +15,6 @@ class PlayerAttackService
     # Calculate the attributes of the object
     attributes = rand(6)
 
-    puts "Turn: " + @game.turn.to_s
-
-    puts "Basic attributes: " + attributes.to_s
-
     # Get extra hit points
     attributes += get_extra_hit_points
 
@@ -58,8 +54,6 @@ class PlayerAttackService
     # Calculate the chance for extra attributes
     chance = (rand * 100).to_i
 
-    puts "Chance: " + chance.to_s
-
     attributes = 0
 
     case chance
@@ -72,7 +66,6 @@ class PlayerAttackService
       when 1
         attributes = 20
     end
-    puts "Extra attributes: " + attributes.to_s
     attributes
   end 
   
