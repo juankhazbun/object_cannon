@@ -2,7 +2,7 @@
 # the hit points
 #
 # @author   Juan Carlos Hazbun Nieto<mailto:juankhazbun@gmail.com>
-# @version  1.0, May 2015
+# @version  1.1, May 2015
 # @since    1.0
 class PlayerAttackService
 
