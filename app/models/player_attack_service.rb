@@ -62,11 +62,7 @@ class PlayerAttackService
   # a start from a uniform distribution
   def get_extra_hit_points
     # Calculate the chance for extra attributes
-<<<<<<< HEAD
-    chance = (rand * 100).to_i
-=======
     chance = rand
->>>>>>> develop
 
     attributes = 0
 

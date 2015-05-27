@@ -1,10 +1,10 @@
 <h1>Ranking</h1>
 <table class="table">
 	<tr>
-		<td>Player 1 Name</td>
-		<td>Player 2 Name</td>
-		<td>Winner Wall Health Remaining</td>
-		<td>Winner</td>
+		<th>Player 1 Name</th>
+		<th>Player 2 Name</th>
+		<th>Winner Wall Health Remaining</th>
+		<th>Winner</th>
 	</tr>
 	<% @games.each do |game| %>
     	<tr>
@@ -24,3 +24,6 @@
 		</tr>
   	<% end %>
 </table>
+<div class="flickr_pagination">
+	<%= will_paginate @games %>
+</div>

@@ -5,5 +5,5 @@
 	<%= f.simple_fields_for :player2 do |player2_form| %>
 		<%= player2_form.input :name, label: 'Player 2 Name' %>
 	<% end %>
-<%= f.submit %>
+<%= f.submit class: "btn btn-danger btn-lg" %>
 <% end %>
