@@ -6,8 +6,8 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rspec'
 require 'capybara/rails'
-require 'capybara/webkit/matchers'
-Capybara.javascript_driver = :webkit
+#require 'capybara/webkit/matchers'
+#Capybara.javascript_driver = :webkit
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -36,15 +36,6 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
-  #config.before :each do
-  #  if Capybara.current_driver == :rack_test
-  #    DatabaseCleaner.strategy = :transaction
-  #  else
-  #    DatabaseCleaner.strategy = :truncation
-  #  end
-  #  DatabaseCleaner.start
-  #end
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
