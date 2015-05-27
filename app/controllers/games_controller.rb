@@ -21,8 +21,8 @@ class GamesController < ApplicationController
   end
 
   def ranking
-  	# TODO: paginate the results
-  	@games = Game.order('updated_at desc')
+  	
+  	@games = Game.all.paginate(page: params[:page], per_page: 10).order('updated_at desc')
   end
 
   def attack
