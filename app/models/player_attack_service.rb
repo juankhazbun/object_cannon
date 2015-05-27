@@ -15,10 +15,6 @@ class PlayerAttackService
     # Calculate the attributes of the object
     attributes = rand(6)
 
-    puts "Turn: " + @game.turn.to_s
-
-    puts "Basic attributes: " + attributes.to_s
-
     # Get extra hit points
     attributes += get_extra_hit_points
 
@@ -26,18 +22,16 @@ class PlayerAttackService
     if @game.turn == 1
       @game.player2.wall_health = hit(@game.player2, attributes)
 
-      if @game.player2.wall_health == 0
-        @game.winner = 1
-      end
+      # Check if player 1 won the game
+      @game.winner = 1 if wall_down? @game.player2
 
       # Change player turn
       @game.turn = 2
     else
       @game.player1.wall_health = hit(@game.player1, attributes)
 
-      if @game.player1.wall_health == 0
-        @game.winner = 2
-      end
+      # Check if player 2 won the game
+      @game.winner = 2 if wall_down? @game.player1
 
       # Change player turn
       @game.turn = 1
@@ -53,26 +47,35 @@ class PlayerAttackService
     return 0
   end
 
+  # Check for winner
+  def wall_down? player
+    return true if player.wall_health == 0
+    return false 
+  end
+
   # Calculate the chances and get extra hit points
+  # The chances are taken from 0 to 0.36 to cover 
+  # the required chances
+  #
+  # Ruby rand is a modified implementation of a 
+  # Mersenne Twister. We assume that rand generates 
+  # a start from a uniform distribution
   def get_extra_hit_points
     # Calculate the chance for extra attributes
-    chance = (rand * 100).to_i
-
-    puts "Chance: " + chance.to_s
+    chance = rand
 
     attributes = 0
 
-    case chance
-      when 20
-        attributes = 2
-      when 10
-        attributes = 5
-      when 5
-        attributes = 10
-      when 1
-        attributes = 20
+    # Check the chance of extra hit points
+    if chance > 0 && chance <= 0.2
+      attributes = 2
+    elsif chance > 0.2 && chance <= 0.3
+      attributes = 5
+    elsif chance > 0.3 && chance <= 0.35
+      attributes = 10
+    elsif chance > 0.35 && chance <= 0.36
+      attributes = 20
     end
-    puts "Extra attributes: " + attributes.to_s
     attributes
   end 
   
