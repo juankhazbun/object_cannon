@@ -202,7 +202,7 @@ line-height: 18px;
   font-size: 140%;
   padding: 0.8em;
   margin: 1em 0;
-        font-weight: bold;
+  font-weight: bold;
 }
 
 .alert-danger,
@@ -241,6 +241,9 @@ border-color: #d6e9c6;
 .center {
   margin: 0 auto;
 }
-td {
+th, td {
   text-align: center;
+}
+.top-buffer {
+  margin-top: 50px;
 }

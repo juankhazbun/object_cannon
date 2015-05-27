@@ -22,17 +22,21 @@
 	</div>
 	<div class="col-sm-4"></div>
 	<div class="col-sm-4">
-		<h2>Health: <span id="player2_wall_health"><%= @game.player2.wall_health%></span></h2>
+		<h2>Health: <span id="player2_wall_health"><%= @game.player2.wall_health %></span></h2>
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-12">
-		<%= link_to "Attack!!!", game_attack_path, remote: true, id: "player1_button", class: "btn btn-danger btn-lg ", role:"button" %> 
+	<div class="col-sm-4 text-center">
+		<%= link_to "Attack!!!", game_attack_path, remote: true, id: "player1_button", class: "btn btn-danger btn-lg", role:"button" %> 
+	</div>
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4 text-center">
+		<%= link_to "Attack!!!", game_attack_path, remote: true, id: "player2_button", class: "btn btn-danger btn-lg disabled", role:"button" %> 
 	</div>
 </div>
-<div class="row">
+<div class="row ">
 	<div class="col-sm-2"></div>
-	<div id="hits-log" class="col-sm-8"></div>
+	<div id="hits-log" class="col-sm-8 top-buffer"></div>
 	<div class="col-sm-2"></div>
 </div>
 <div class="row">
